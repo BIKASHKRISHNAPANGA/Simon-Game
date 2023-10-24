@@ -4,21 +4,14 @@ var buttonColours=["red","blue","green","yellow"];
 var started=false;
 var level=0;
 
-if ('ontouchstart' in document.documentElement) {
-    // Touch-based device, use touchstart event
-    $("#level-title").text("Touch me to start");
-    $(document).on("touchstart", startProgram);
-} else {
-    // Desktop or non-touch device, use keypress event
-    $(document).on("keypress", startProgram);
-}
-function startProgram(){
+$("#start-button").click(function (){
     if(!started){
         $("#level-title").text("level "+ level);
         nextSequence();
         started=true;
+        $("#start-button").hide(); 
     }
-};
+});
 
 
 $(".btn").click(function (){
@@ -93,4 +86,6 @@ function startOver(){
     level=0;
     gamePattern=[];
     started=false;
+    $("#start-button").text("RESTART");
+    $("#start-button").show();
 }
